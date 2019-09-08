@@ -1,0 +1,34 @@
+Fehlerbehebung:
+
+Auf manchen Computersystemen kann es vorkommen, dass bei einigen Softwaredarstellungen 
+(application.exe) ein Fehler beim Einstellen der Auflösung 640 x 480 mit 32 Bit Farbtiefe 
+auftritt, und die Programme nicht wie gewollt ausgeführt werden. Betroffen sind 
+vorzugsweise Computer mit dem Betriebssystem Windows 2000, auf neueren Betriebssystemen 
+sollte dieses Problemen nicht auftreten. 
+
+Um diesen Fehler zu beheben, muss die Auflösung beispielsweise auf 1024 x 768 Pixel, 
+32 Bit Farbtiefe, erhöht und das betreffende Programm neu kompiliert werden. 
+
+Um die Auflösung zu erhöhen, ersetzen Sie bitte die Anweisung
+
+  screen_interface.open_window( hInstance, 640, 480, 32 );
+
+bzw. 
+
+  initialise_world( hInstance, 640, 480, 32 );
+
+die sich jeweils am Anfang der Funktion WinMain() befindet (Datei: application.cpp), 
+durch folgenden Befehl:
+
+  screen_interface.open_window( hInstance, 1024, 768, 32 );
+
+bzw.
+
+  initialise_world( hInstance, 1024, 768, 32 );
+
+Der Kompiliervorgang wird im Anhang D beschrieben, der im Hauptverzeichnis der CD in der 
+Datei Anhaenge.pdf zu finden ist.
+
+Programme, die bereits unter der beschriebenen Auflösung arbeiten, beispielsweise a7_12_4 
+oder a8_19_3, sowie die hardwarebeschleunigten Darstellungen (hardware.exe) sind von 
+diesem Fehler nicht betroffen.

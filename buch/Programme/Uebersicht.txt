@@ -1,0 +1,278 @@
+Übersicht über die Beispielprogramme
+
+Kapitel 2:
+
+a2_1 Einfache Darstellung der Farbpalette
+a2_2 Palettendarstellung in der Mitte des Bildschirms
+a2_3 Schneeeffekt, software
+a2_4 Das Chaosspiel
+     1 Gleichseitiges Dreieck
+     2 Zufällige Dreiecke
+     3 Vorgriff auf das dritte Kapitel
+a2_5 Mathematische Darstellung von Linien
+a2_6 Bresenhams Linienalgorithmus
+a2_7 Funktionen von R nach R
+     1 Reelle Polynome, einfache Koordinatenachsen
+     2 reelle Polynome mit beschrifteten Achsen
+     3 Trigonometrische Funktionen, Funktionsgraph als Linienzug
+a2_8 Funktionen von R nach R2
+a2_9 Darstellung von Spiralen
+a2_10 Bresenhams Kreisalgorithmus
+a2_11 Schneeeffekt, hardware
+a2_12 Darstellung des Schneeeffekts in einem Rahmen
+      1 Darstellung der benutzerdefinierten Palette, Hintergrund Weiß
+      2 Ein leerer Rahmen
+      3 Zwei verschiedene Rahmen
+a2_13 Gleichseitige Vielecke
+a2_14 Zykloiden
+      1 Zykloiden an der Gerade
+      2 Zykloiden am Kreis
+      3 Darstellung benutzerdefinierter Zykloiden
+a2_15 Bezierkurven
+      1 Bezierkurven mit 4 Kontrollpunkten
+      2 Bezierkurven mit n Kontrollpunkten
+a2_16 Splines
+      1 Eindimensional
+      2 Zweidimensional
+
+Kapitel 3:
+
+a3_1 Darstellung zweidimensionaler Polygone
+a3_2 Demonstration der Projektion
+a3_3 Erster Einsatz von Matrizen
+a3_4 Wiederholte Beschriftung des Videospeichers
+a3_5 flimmernde Animation
+a3_6 Double Buffering Algorithmus
+a3_7 Rotation um die globale z-Achse
+a3_8 Rotation um die eigenen Achsen
+a3_9 Rotation um einen beiebigen Punkt
+a3_10 Konstante Matrizen, ungewollte Ausgabe
+a3_11 Einsatz variabler Matrizen
+a3_12 Verschiebung und Rotation mehrerer Polygone
+a3_13 Gleichzeitige Rotation um die eigenen Achsen und um einen Punkt
+      1 Aufbau regelmäßiger n-Ecke
+      2 Gemeinsame Verwaltung von drei Polygonen
+      3 Rotation der Polygone um die eigenen Achsen
+      4 Mittelpunkt des Gegenstandes rotiert um einen beliebigen Punkt
+a3_14 Gleichmäßige Skalierung, ungewollte Ausgabe
+a3_15 Gleichmäßige Skalierung, beabsichtigte Ausgabe
+a3_16 Ungleichmäßige Skalierung
+a3_17 Die Illusion der Tiefenverschiebung
+a3_18 hardwarebeschleunigte Darstellung von Linien, opengl
+a3_19 hardwarebeschleunigte Darstellung von Linien, directx
+
+Kapitel 4:
+
+a4_1 Rasterung im Uhrzeigersinn nummerierter Polyogne
+a4_2 Parallelität zur xy-Ebene nicht immer gegeben
+a4_3 Rasterung beliebiger konvexer Polygone
+a4_4 Darstellung von Polyeder ohne perspektivische Korrektur
+a4_5 Perspektivisch korrekte Darstellung konvexer Polyeder
+a4_6 Platonische Körper
+a4_7 Backface Removal,opengl
+a4_8 Backface Removal, directx
+a4_9 Ein- und Ausschalten des Backface Removal
+a4_10 Z-Buffer
+a4_11 Offener Körper
+a4_12 Clear Reduction
+a4_13 Z-Buffer, opengl
+a4_14 Z-Buffer, directx
+a4_15 Polygon Clipping
+a4_16 Planetensystem
+
+Kapitel 5:
+
+a5_1 eventbasierend
+a5_2 eventbasierend und direkt
+     1 Hauptprogramm
+     2 Übungsaufgabe
+a5_4 Mausposition anzeigen
+a5_5 Verschiebung von Punkten
+     1 Hauptprogramm
+     2 Übungsaufgabe
+
+Kapitel 6:
+
+a6_1 Flat Shading
+a6_2 Gouraud Shading, eine Primärfarbe
+a6_3 Gouraud Shading, mehrere Primärfarben
+     1 Erstellung der Klasse primary_color
+     2 mehrere Primärfarben
+a6_4 Flat Shading, mehrere Primärfarben
+     1 Torus
+     2 Tetrahedron Compound, Linear Z-Buffering
+     3 Cube Compound
+a6_5 Flat Shading Hardware
+     1 opengl
+     2 directx
+a6_6 Gouraud Shading Hardware
+     1 opengl
+     2 directx
+a6_7 Rotationssymmetrische Polyeder
+     1 Punktwolke
+     2 Polygone
+     3 Rotationssymmetrie, Sphärenapproximation
+     4 Torusapproximation
+     5 Kegelapproximation
+a6_8 Einheitssphären verschiedener Längenfunmtionen
+a6_9 Polygon Morphing, hardware
+     1 zwei Zustände
+     2 beliebig viele Zustände
+a6_10 Phong Shading, eine Primärfarbe
+a6_11 Metal Shading, mehrere Primärfarben
+a6_12 Farbverläufe n-ten Grades
+a6_13 Flat Shading, erweiterte Farbgebung
+a6_14 Gouraud Shading, erweiterte Farbgebung
+
+Kapitel 7:
+
+a7_1 Darstellung einer 8 Bit Bitmap
+a7_2 Beschriftung einer Bitmap
+a7_3 Bitmaprotation
+a7_4 Darstellung einer 32 Bit Bitmap
+a7_5 Auswahl eines rechteckigen Teilbereiches
+a7_6 Änderung der Größe einer Bitmap
+a7_7 Transparenzeffekte
+     1 einzelne transparente Farbe
+     2 Semitransparenz durch Graustufen angegeben
+a7_8 Feuereffekt
+     1 Hauptprogramm
+     2 Übungsaufgabe, Fensterdarstellung
+a7_9 Plasmaeffekte
+     1 statisch
+     2 dynamisch
+       1 Einsatz detaillierter Funktionen
+       2 Einsatz einfacher Funktionen
+       3 Erscheinungsbild der Funktionen
+       4 Übungsaufgabe
+       5 Übungsaufgabe
+a7_10 Plasmafraktal
+      1 offene Palette
+      2 ringförmige Palette
+      3 Übungsaufgabe
+a7_11 Bitmapverzerrung
+      1 Linsenform
+      2 Einfache Linsenfunktion
+      3 Erweiterte Linsenfunktion
+      4 Verschiebung des Funktionsgraphen
+      5 Erzeugung von Wirbel
+      6 Erscheinungsbild der Linsenfunktionen
+a7_12 Mandelbrotmenge
+      1 Ausgabe auf dem Bildschirm
+      2 Double Buffering
+      3 Bereichabgrenzung, keine Vergrößerung
+      4 Bereichabgrenzung mit Vergrößerung
+
+Kapitel 8:
+
+a8_1 Lineare Texturprojektion
+a8_2 Perspektivische Texturprojektion
+a8_3 Depth Shading
+a8_4 Ungenauigkeit der linearen Interpolation
+a8_5 Interpolation inverser Z-Koordinaten
+a8_6 Perspektivischer Z-Speicher Algorithmus
+     1 Beispiel ohne Clear Reduction
+     2 Beispiel mit Clear Reduction
+a8_7 Dynamischer Wechsel von Texturen
+a8_8 MIP Mapping
+a8_9 Hardwarebeschleunigte Texturprojektion
+     1 opengl
+     2 directx
+a8_10 Texturen im 2D Raum
+      1 Berechnung der Kugeltextur
+      2 Darstellung  zweidimensionaler Bitmaps
+      3 Darstellung zweidimensionaler Texturen
+      4 Skalierung zweidimensionaler Texturen
+      5 Bewegung zweidimensionaler Texturen
+      6 Semitransparenz mit opengl
+        1 Mehrere Kugel, keine Transparenz
+        2 Mehrere Kugel, transparente Pixel
+      7 Schaltflächen
+      8 Anzeige der Werte
+      9 Farbwechsel
+      10 Kollisionserkennung
+      11 Verschiebung, abgebremste Bewegung
+      12 Verschiebung, gleichförmige Bewegung
+a8_11 Texturparkettierung
+      1 Herleitung
+        1 Texturskalierung
+        2 Texturverschiebung
+      2 Optimierung, Spezifische Texturkoordinaten
+      3 Allgemeine Texturkoordinaten
+      4 MIP Mapping
+a8_12 Hardwarebeschleunigte Texturparkettierung
+      1 opengl
+      2 directx
+a8_13 Polygonübergreifende Texturprojektion
+      1 Ebene
+      2 Torus
+      3 Sphäre
+a8_14 Textured Flat Shading, einfache Farbgebung
+      1 Verschiebung einer Textur in Richtung einer Farbe
+      2 Hauptprogramm
+a8_15 Textured Flat Shading, erweiterte Farbgebung
+a8_16 Fahne
+      1 Drahtgittermodell
+      2 Konstante Funktion
+      3 Dynamische Verschiebung
+      4 Texturiert
+      5 Texturschattierung
+a8_17 Textured Metal Shading
+a8_18 Navigation im 3D Raum
+      1 Rahmenprogramm
+      2 Freier Flug, konstante Betrachterposition
+      3 Orthonormalmatrizen
+        1 Das Problem der widerholten Multiplikation
+        2 Programmvorgabe
+        3 Einsatz lokaler Koordinatensysteme
+        4 Bewegung der Kameraposition
+      4 Freier Flug, variable Betrachterposition
+a8_19 Einsatz benutzerdefinierter Darstellungsfenster
+      1 Zwei verschiedene Sichtfenster
+      2 Eine lokale Kamera
+      3 Mehrere lokale Kameras
+      4 Zwei Kameras, ein Sichtfenster
+a8_20 Rotation um eine beliebige Achse
+      1 Softwarematrizen, opengl
+      2 Einfaches Beispiel, Hardwarematrizen, opengl
+      3 einfaches Beispiel, Hardwarematrizen, directx
+      4 Kombination von Soft- und Hardwarematrizen, opengl
+
+Kapitel 9:
+
+a9_1 Klasse viewport
+     1 Hauptprogramm
+     2 Optimierung
+a9_2 einfaches Höhenfeld
+a9_3 Texturiertes Höhenfeld
+a9_4 Höhenstufen farblich gekennzeichnet
+a9_5 Freier Flug über der Landschaft
+a9_6 Grenzen der Landschaft
+a9_7 Rechteckige Hülle des Viewports
+a9_8 Projektion der rechteckigen Hülle
+a9_9 Rasterung der rechteckigen Hülle
+a9_10 Freier Flug, rechteckige Hülle
+      1 Kein Nebel
+      2 Nebeleffekt
+a9_11 Konvexe Hülle einer Menge von Punkten
+a9_12 Konvexe Hülle des Viewports
+a9_13 Projektion der konvexen Hülle
+a9_14 Die Funktion set_side()
+      1 Berechnung der Schnittpunkte
+      2 Darstellung der Landschaftsquadrate
+a9_15 Rasterung der konvexen Hülle
+a9_16 Freier Flug, konvexe Hülle
+      1 Kein Nebel
+      2 Nebeleffekt
+a9_17 Uneingeschränkte Bewegung
+      1 Globale Darstellung
+      2 Lokale Darstellung
+a9_18 Unterschiedliche Landschaftstexturen
+      1 Bitmapverlauf
+      2 Aufbau der Landschaftsbitmap
+      3 Einsatz von Detailtexturen
+a9_19 Berechnung von Schatten
+      1 Schattierte Höhenfelder
+      2 Schattierte Landschaften, eine Textur
+      3 Schattierte Landschaften, mehrere Texturen
+

@@ -1,0 +1,47 @@
+8 -0.5  -0.5  -0.5
+  -0.5   0.5  -0.5
+   0.5   0.5  -0.5
+   0.5  -0.5  -0.5
+  -0.5   0.5   0.5
+   0.5   0.5   0.5
+   0.5  -0.5   0.5
+  -0.5  -0.5   0.5
+
+6  4    0  1  2  3    0   0   255
+   4    7  6  5  4    150 150 150
+   4    1  4  5  2    255 0   0
+   4    0  3  6  7    70  70  70
+   4    3  2  5  6    255 255 0
+   4    0  7  4  1    128 0   255
+
+
+
+
+BITTE KEINE KOMMENTARE ZWISCHEN DEN ZAHLENWERTEN EINFÜGEN
+
+
+
+Angaben:
+
+(Anzahl der Vertices) (x-, y- und z-Komponenten des ersten Vertex)
+                      (x-, y- und z-Komponenten des zweiten Vertex)
+
+                      ...
+
+                      (x-, y- und z-Komponenten des letzten Vertex)
+
+(Anzahl der Polygone)
+
+    (Anzahl der Vertices des ersten Polygons)
+    (Verweise auf die Vertices des ersten Polyogns)
+    (Rot-, Grün- und Blaukomponenten des ersten Polygons)
+
+    (Anzahl der Vertices des zweiten Polygons)
+    (Verweise auf die Vertices des zweiten Polyogns)
+    (Rot-, Grün- und Blaukomponenten des zweiten Polygons)
+
+    ...
+
+    (Anzahl der Vertices des letzten Polygons)
+    (Verweise auf die Vertices des letzten Polyogns)
+    (Rot-, Grün- und Blaukomponenten des letzten Polygons)

@@ -1,0 +1,15 @@
+8  -2   2  -2
+    2   2  -2
+    2  -2  -2
+   -2  -2  -2
+   -2   2   2
+    2   2   2
+    2  -2   2
+   -2  -2   2
+
+6  4    0  1  2  3    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp
+   4    4  7  6  5    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp
+   4    0  3  7  4    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp
+   4    2  1  5  6    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp
+   4    3  2  6  7    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp
+   4    0  4  5  1    8  t1.bmp  t2.bmp  t3.bmp  t4.bmp  t5.bmp  t4.bmp  t3.bmp  t2.bmp

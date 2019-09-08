@@ -1,0 +1,40 @@
+#ifndef GLOBAL_DEFINITIONS
+#define GLOBAL_DEFINITIONS
+
+#include "simple_types.h"
+
+const long largest_point_count = 100;
+vertex wpoint[ largest_point_count+10 ];
+svertex spoint[ largest_point_count+20 ];
+
+screen_side *left_side, *right_side;
+pixel_32 *sbuffer = NULL;
+double *zbuffer = NULL;
+
+void initialise_world( HINSTANCE hInstance, long xr, long yr, long bit_depth )
+{
+  screen_interface.open_window( hInstance, xr, yr, bit_depth );
+
+  if( (sbuffer = new pixel_32[ x_res*y_res ]) == NULL )
+    exit_error( "*sbuffer: Fehler bei der Reservierung von Arbeitsspeicher.\n" );
+
+  if( (zbuffer = new double[ x_res*y_res ]) == NULL )
+    exit_error( "*zbuffer: Fehler bei der Reservierung von Arbeitsspeicher.\n" );
+
+  if
+  ( (left_side = new screen_side[ y_res ]) == NULL ||
+    (right_side = new screen_side[ y_res ]) == NULL
+  )
+  exit_error( "*left_sede, *right_side: Fehler bei der Reservierung von Arbeitsspeicher.\n" );
+}
+
+void destroy_world( void )
+{
+  if( sbuffer ) delete [] sbuffer;
+  if( zbuffer ) delete [] zbuffer;
+
+  if( left_side ) delete [] left_side;
+  if( right_side ) delete [] right_side;
+}
+
+#endif

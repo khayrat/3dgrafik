@@ -1,0 +1,19 @@
+5   0    0    80        0    0    255
+    70   70   70        255  255  255
+    80   0    0         255  0    0
+    0    80   0         0    255  0
+    80   80   0         255  255  0
+    
+    
+    
+    
+-Anordnung der Farbinformationen:
+
+  (Anzahl der Primärfarben)    (Komponenten der Anfangsfarbe des ersten Farbverlaufes)  (Komponenten der Endfarbe des ersten Farbverlaufes)
+                               (Komponenten der Anfangsfarbe des zweiten Farbverlaufes)  (Komponenten der Endfarbe des zweiten Farbverlaufes)
+                               usw.
+
+
+-Maximalwert der drei Farbkomponenten: 255
+
+BITTE KEINE KOMMENTARE ZWISCHEN DEN ZAHLENWERTEN EINFÜGEN

@@ -1,0 +1,55 @@
+#ifndef GLOBAL_DEFINITIONS
+#define GLOBAL_DEFINITIONS
+
+#include "simple_types.h"
+#include "primary_color.h"
+
+const long largest_point_count = 500;
+vertex wpoint[ largest_point_count+10 ];
+vertex c_wpoint[ largest_point_count+10 ];
+svertex spoint[ largest_point_count+20 ];
+svertex c_spoint[ largest_point_count+20 ];
+
+screen_side *left_side, *right_side;
+pixel_32 *sbuffer = NULL;
+double *zbuffer = NULL;
+
+const double z_min = 5, z_max = 50;
+long x_min, x_max, y_min, y_max;
+const double pr_cnst = 400;
+
+double clear_translation = 0.0;
+const double max_clear_translation = -2147483648.0 + 2 * z_max;
+
+primary_color palette;
+
+void initialise_world( HINSTANCE hInstance, long xr, long yr, long bit_depth )
+{
+  screen_interface.open_window( hInstance, xr, yr, bit_depth );
+
+  x_min = 0;  x_max = xr - 1;
+  y_min = 0;  y_max = yr - 1;
+
+  if
+  (
+    (sbuffer = new pixel_32[ x_res*y_res ]) == NULL ||
+    (zbuffer = new double[ x_res*y_res ])   == NULL ||
+    (left_side = new screen_side[ y_res ])  == NULL ||
+    (right_side = new screen_side[ y_res ]) == NULL
+  )
+  exit_error( "initialise_world(): Fehler bei der Reservierung von Arbeitsspeicher.\n" );
+
+  pixel_32 borders[ 3 ] = {  pixel_32( 0, 0, 20 ), pixel_32( 0, 0, 255 ), pixel_32( 255, 255, 255 )  };
+//  pixel_32 borders[ 3 ] = {  pixel_32( 0, 0, 255 ), pixel_32( 255, 255, 255 ), pixel_32( 0, 0, 255 )  };
+  palette.load( 512, 3, borders );
+}
+
+void destroy_world( void )
+{
+  if( sbuffer ) delete [] sbuffer;
+  if( zbuffer ) delete [] zbuffer;
+  if( left_side ) delete [] left_side;
+  if( right_side ) delete [] right_side;
+}
+
+#endif
