@@ -39,7 +39,8 @@ int main(int argc, char ** argv) {
     SDL_Texture *texture = SDL_CreateTexture(
             renderer,
             SDL_PIXELFORMAT_ARGB8888,
-            SDL_TEXTUREACCESS_STATIC,
+            SDL_TEXTUREACCESS_TARGET,
+            //SDL_TEXTUREACCESS_STATIC,
             640, 480);
 
     if (!texture) {
@@ -50,12 +51,16 @@ int main(int argc, char ** argv) {
         return 1;
     }
 
-    // clear the window (it goes black)
+    // clear window white
+    SDL_SetRenderTarget(renderer, texture);
+    SDL_SetRenderDrawColor(renderer, 0xff, 0xff, 0xff, 0x00);
     SDL_RenderClear(renderer);
+    SDL_SetRenderTarget(renderer, NULL);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
 
-    Uint32 *pixels = new Uint32[640 * 480];
-    // fill pixels with 255 (white)
-    memset(pixels, 255, 640 * 480 * sizeof(Uint32));
+    // set color to black
+    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
 
     while (!quit) {
         SDL_WaitEvent(&event);
@@ -74,14 +79,13 @@ int main(int argc, char ** argv) {
                 if (leftMouseButtonDown) {
                     int mouseX = event.motion.x;
                     int mouseY = event.motion.y;
-                    pixels[mouseY * 640 + mouseX] = 0;
+                    SDL_SetRenderTarget(renderer, texture);
+                    SDL_RenderDrawPoint(renderer, mouseX, mouseY);
                 }
                 break;
         }
 
-        // update graphic memory - note: this is time consuming!!
-        SDL_UpdateTexture(texture, NULL, pixels, 640 * sizeof(Uint32));
-
+        SDL_SetRenderTarget(renderer, NULL);
         // double buffering:
         // write to back buffer
         SDL_RenderCopy(renderer, texture, NULL, NULL);

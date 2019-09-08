@@ -1,23 +1,28 @@
-CXX = g++
-# Update these paths to match your installation
-# You may also need to update the linker option rpath, which sets where to look for
-# the SDL2 libraries at runtime to match your install
-SDL_LIB = -L/usr/local/lib -lSDL2 -Wl,-rpath=/usr/local/lib
-SDL_INCLUDE = -I/usr/local/include
-# You may need to change -std=c++11 to -std=c++0x if your compiler is a bit older
-CXXFLAGS = -w -c -std=c++11 $(SDL_INCLUDE)
-#CXXFLAGS = -Wall -c -std=c++11 $(SDL_INCLUDE)
-LDFLAGS = $(SDL_LIB)
+#OBJS specifies which files to compile as part of the project
+OBJS = application.cpp
+
+#CC specifies which compiler we're using
+CC = g++
+
+#COMPILER_FLAGS specifies the additional compilation options we're using
+# -w suppresses all warnings
+COMPILER_FLAGS = -w
+
+#LINKER_FLAGS specifies the libraries we're linking against
+LINKER_FLAGS = -lSDL2
+
+#specifies the name of our exectuable
 EXE = application
 
-all: $(EXE)
+# add sources files here
+SRCS :=
 
-$(EXE): application.o
-	$(CXX) $< $(LDFLAGS) -o $@
+#OBJS specifies which files to compile as part of the project
+OBJS = $(SRCS:.cpp=.o)
 
-
-main.o: application.cpp
-	$(CXX) $(CXXFLAGS) $< -o $@
+#This is the target that compiles our executable
+all : $(OBJS)
+	$(CC) $(OBJS) $(COMPILER_FLAGS) $(LINKER_FLAGS) -o $(EXE)
 
 clean:
-	rm *.o && rm $(EXE)
+		rm *.o && rm $(EXE)
