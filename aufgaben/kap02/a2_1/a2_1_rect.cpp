@@ -71,7 +71,9 @@ int main(int argc, char **argv) {
       }
     }
 
+    // render to the window
     SDL_SetRenderTarget(renderer, NULL);
+
     // double buffering: draw to window
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
