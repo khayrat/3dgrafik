@@ -1,0 +1,11 @@
+3. Definieren Sie eine Farbpalette mit 256 Einträgen, die vier gleich lange Farbverläufe enthält:
+- von Schwarz nach Rot
+- von Schwarz nach Weiß
+- von Schwarz nach Grün
+- von Schwarz nach Blau
+
+Schwarz und Weiß lassen sich hierbei durch die Farbkomponenten (0, 0, 0) bzw. (255, 255, 255) definieren. 
+Rot, Grün und Blau werden dementsprechend ausgedrückt mit 
+Rot:  (255, 0, 0)
+Grün: (0, 255, 0)
+Blau: (0, 0, 255)
