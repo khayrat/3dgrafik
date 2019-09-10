@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
     // render to texture (VRAM)
     SDL_SetRenderTarget(renderer, texture);
 
-    // top left ccordinate when draw-rect position is the center
+    // top left coordinate when draw-rect position is the center
     int x = (WIN_WIDTH - 256) / 2;
     int y = (WIN_HEIGHT - 200) / 2;
 
