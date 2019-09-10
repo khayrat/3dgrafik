@@ -17,9 +17,6 @@ int main(int argc, char* args[]) {
   // The window we'll be rendering to
   SDL_Window* window = NULL;
 
-  // The surface contained by the window
-  SDL_Surface* screenSurface = NULL;
-
   // Initialize SDL
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL could not initialize SDL_Error: %s\n", SDL_GetError());
@@ -40,9 +37,13 @@ int main(int argc, char* args[]) {
     return 1;
   }
 
+  // TODO: added error handling
   SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
   SDL_Texture * texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC, SCREEN_WIDTH, SCREEN_HEIGHT);
+
   Uint32 *pixels = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT]; 
+
+  // set pixel color to white
   memset(pixels, 255, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
 
   load_palette();
