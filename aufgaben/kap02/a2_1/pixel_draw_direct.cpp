@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
 
     // create a window on the screen
     SDL_Window *window = SDL_CreateWindow(
-        "Empty Window",
+        "Color Palette",
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
         256, 480, 0);
