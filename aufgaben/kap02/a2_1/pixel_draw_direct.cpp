@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
     // render loop
     for (int x=0; x<256; x++) {
       SDL_SetRenderDrawColor(renderer, palette[x].red, palette[x].green, palette[x].blue, palette[x].alpha);
-      for (int y=0; y<479; y++) {
+      for (int y=0; y<480; y++) {
           SDL_RenderDrawPoint(renderer, x, y);
       }
     }
