@@ -104,7 +104,7 @@ pixel_32* make_palette() {
     int white_offset = 1 * part_size;
     int green_offset = 2 * part_size;
     int blue_offset  = 3 * part_size;
-    int c = 0; // for adjusting color run into part
+    int c = 0; // to fit the 256 sized color-run into size of the part
 
     for (int i = 0; i < part_size; i++, c += 4) {
         palette[red_offset   + i] = pixel_32( c, 0, 0 ); // black-red
