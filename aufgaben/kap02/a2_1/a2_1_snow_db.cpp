@@ -59,17 +59,16 @@ int main(int argc, char **argv) {
     int x = (WIN_WIDTH - 256) / 2;
     int y = (WIN_HEIGHT - 200) / 2;
 
-    // render to texture (VRAM)
-    SDL_SetRenderTarget(renderer, texture);
-
     // render loop
     for (int i=0; i<10000; i++) {
-      int xx = rand() % 256 + x;
-      int yy = rand() % 200 + y; 
-      int ii = rand() % 16 + 16;
+      int xx = rand() % 256 + x; // force x-coordinate into rect-range
+      int yy = rand() % 200 + y; // force y-coordinate into rect-range
+      int ii = rand() % 16 + 16; // force color into grey-range
 
+      // select color to render
       SDL_SetRenderDrawColor(renderer, palette[ii].red, palette[ii].green, palette[ii].blue, palette[ii].alpha);
 
+      // render point to VRAM
       SDL_RenderDrawPoint(renderer, xx, yy);
     }
 
