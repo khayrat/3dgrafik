@@ -22,6 +22,7 @@ int main(int argc, char **argv) {
     createRenderer();
     createTexture();
 
+    // set render color
     SDL_SetRenderDrawColor(renderer, palette[15].red, palette[15].green, palette[15].blue, palette[15].alpha);
 
     // define corners
@@ -31,17 +32,17 @@ int main(int argc, char **argv) {
         vertex (545, 435)
     };
 
+    // midpoint holder
     vertex m = vertex();
 
     // 0 assign random point to act_point
-    int i = rand() % 3;
-    printf("first point: %d\n", i);
-    vertex act_point = D[i];
+    vertex act_point = D[rand() % 3];
 
     for (int j=0; j<10000; j++) {
+        // 1 step
+
         // choose another point
-        int ii = rand() % 3;
-        vertex other_point = D[ii];
+        vertex other_point = D[rand() % 3];
 
         // find midpoint
         find_midpoint(act_point, other_point, &m);
@@ -49,9 +50,12 @@ int main(int argc, char **argv) {
         // plot m
         plot_point(m);
 
+        // m becomes new act_point
         act_point = m;
 
-        // get event loop
+        // 2 repeat
+
+        // get event
         SDL_PollEvent(&event);
         if (event.type == SDL_QUIT) {
             quit();
