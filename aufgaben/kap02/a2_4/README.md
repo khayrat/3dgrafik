@@ -1,6 +1,7 @@
 |Programm|Content|
 |---------|-------|
 |a2_4_1.cpp    |choas game|
+|a2_4_2.cpp    |choas game with random trinagles|
 
 Die zweidimensionalen Koordinaten der Eckpunkte eines gleichseitigen Dreiecks D sind bekannt: D = {(95, 435), (320, 45), (545, 435)}. 
 Welche Ausgabe entsteht, wenn man beliebig viele Pixel in der Farbe an der Position 15 der Pallette nach folender Regel setzt:
