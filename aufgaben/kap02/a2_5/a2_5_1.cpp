@@ -61,6 +61,33 @@ int main(int argc, char **argv) {
     return 0;
 }
 
+void get_point(vertex a, vertex b, double delta, vertex* p) {
+    int delta_x = b.x - a.x;
+    int delta_y = b.y - a.y;
+    p->x = a.x + delta * (float) delta_x;
+    p->y = a.y + delta * (float) delta_y;
+
+    printf("(a: (%d, %d), b: (%d, %d), delta: %f -> (%d, %d)\n", a.x, a.y, b.x, b.y, delta, p->x, p->y);
+}
+
+void draw_line(vertex begin, vertex end) {
+    vertex point_holder;
+    double detail_level = 0.001;
+
+    renderToVRAM();
+
+    for (double delta = 0; delta < 1; delta += detail_level) {
+        get_point(begin, end, delta, &point_holder);
+        plot_point(point_holder);
+
+        // get event
+        SDL_PollEvent(&event);
+        if (event.type == SDL_QUIT) break;
+    }
+
+    renderToScreen();
+}
+
 void plot_point(vertex p) {
     SDL_RenderDrawPoint(renderer, p.x, p.y);
 }
@@ -131,33 +158,6 @@ void createCanvas() {
     createWindow();
     createRenderer();
     createTexture();
-}
-
-void get_point(vertex a, vertex b, double delta, vertex* p) {
-    int delta_x = b.x - a.x;
-    int delta_y = b.y - a.y;
-    p->x = a.x + delta * (float) delta_x;
-    p->y = a.y + delta * (float) delta_y;
-
-    printf("(a: (%d, %d), b: (%d, %d), delta: %f -> (%d, %d)\n", a.x, a.y, b.x, b.y, delta, p->x, p->y);
-}
-
-void draw_line(vertex begin, vertex end) {
-    vertex point_holder;
-    double detail_level = 0.001;
-
-    renderToVRAM();
-
-    for (double delta = 0; delta < 1; delta += detail_level) {
-        get_point(begin, end, delta, &point_holder);
-        plot_point(point_holder);
-
-        // get event
-        SDL_PollEvent(&event);
-        if (event.type == SDL_QUIT) break;
-    }
-
-    renderToScreen();
 }
 
 void setColor(pixel_32 color) {
