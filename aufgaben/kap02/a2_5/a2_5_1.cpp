@@ -35,10 +35,8 @@ int main(int argc, char **argv) {
     vertex end_point   = vertex(rand() % SCREEN_WIDTH, rand() % SCREEN_HEIGHT);
     while(true) {
         printf("#############\n");
-        printf("start_point.x = %d\n", start_point.x);
-        printf("start_point.y = %d\n", start_point.y);
-        printf("end_point.x = %d\n", end_point.x);
-        printf("end_point.y = %d\n", end_point.y);
+        printf("start_point: (%d, %d)\n", start_point.x, start_point.y);
+        printf("end_point  : (%d, %d)\n", end_point.x, end_point.y);
         printf("#############\n");
 
         draw_line(start_point, end_point);
