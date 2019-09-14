@@ -16,14 +16,14 @@ void createWindow();
 void createRenderer();
 void createTexture();
 void createCanvas();
+void setColor(pixel_32 color);
+void renderToVRAM();
+void renderToScreen();
 void quit();
 
 void get_point(vertex a, vertex b, double delta, vertex* point);
 void draw_line(vertex begin, vertex end);
 void plot_point(vertex);
-void setColor(pixel_32 color);
-void renderToVRAM();
-void renderToScreen();
 
 int main(int argc, char **argv) {
     createCanvas();
@@ -31,8 +31,10 @@ int main(int argc, char **argv) {
     pixel_32 color = pixel_32(150, 150, 150);
     setColor(color);
 
+    // set initial start and end point
     vertex start_point = vertex(rand() % SCREEN_WIDTH, rand() % SCREEN_HEIGHT);
     vertex end_point   = vertex(rand() % SCREEN_WIDTH, rand() % SCREEN_HEIGHT);
+
     while(true) {
         printf("#############\n");
         printf("start_point: (%d, %d)\n", start_point.x, start_point.y);
@@ -60,10 +62,10 @@ int main(int argc, char **argv) {
 }
 
 void get_point(vertex a, vertex b, double delta, vertex* p) {
-    int delta_x = b.x - a.x;
-    int delta_y = b.y - a.y;
-    p->x = a.x + delta * (float) delta_x;
-    p->y = a.y + delta * (float) delta_y;
+    int v_x = b.x - a.x;
+    int v_y = b.y - a.y;
+    p->x = a.x + delta * (float) v_x;
+    p->y = a.y + delta * (float) v_y;
 
     printf("(a: (%d, %d), b: (%d, %d), delta: %f -> (%d, %d)\n", a.x, a.y, b.x, b.y, delta, p->x, p->y);
 }
@@ -161,11 +163,13 @@ void createCanvas() {
 void setColor(pixel_32 color) {
     SDL_SetRenderDrawColor(renderer, color.red, color.green, color.blue, color.alpha);
 }
+
 void renderToVRAM() {
     // render to texture (VRAM)
     printf("renderToVRAM...\n");
     SDL_SetRenderTarget(renderer, texture);
 }
+
 void renderToScreen() {
     printf("renderToScreen...\n");
     // render to screen
