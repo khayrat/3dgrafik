@@ -1,0 +1,2 @@
+1. Schreiben Sie ein Programm, das Linien mit zufälligen Anfangs- und Endpunkten auf dem Bildschirm zeichnet.
+   Der Endpunkt soll hierbei identisch sein mit dem Anfangspunkt der gleich danach daragestellten Strecke sein.
