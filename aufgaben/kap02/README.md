@@ -7,3 +7,4 @@
 |a2_4     |chaos game|
 |a2_5     |lines|
 |a2_6     |bresenham algorithm for lines|
+|a2_7     |display R -> R functions|
