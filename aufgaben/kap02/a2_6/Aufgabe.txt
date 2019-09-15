@@ -1,0 +1,1 @@
+Schreiben Sie ein Programm, das die selbe Ausgabe wie a2_5 erzeugt unter Verwendung des Bresenham-Algorthimus.
