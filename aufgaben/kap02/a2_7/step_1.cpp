@@ -236,7 +236,7 @@ void renderToScreen() {
 vertex project(double x, double y) {
     int sx, sy;
     sx = int((x - begin_x) * SCREEN_WIDTH  / (end_x - begin_x));
-    sy = int((y - end_y) * SCREEN_HEIGHT / (begin_y - end_y));
+    sy = int((y - end_y)   * SCREEN_HEIGHT / (begin_y - end_y));
 
     printf("project: (%f,%f) -> (%d,%d)\n", x, y, sx, sy);
     return vertex(sx, sy);
