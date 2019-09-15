@@ -6,3 +6,4 @@
 |a2_3     |snow effect|
 |a2_4     |chaos game|
 |a2_5     |lines|
+|a2_6     |bresnham algorithm for lines|
