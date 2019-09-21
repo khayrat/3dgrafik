@@ -28,7 +28,6 @@ void CheckSDLError(int line);
 void RunGame();
 void Cleanup();
 
-
 bool Init()
 {
 	// Initialize SDL's Video subsystem
@@ -38,9 +37,14 @@ bool Init()
 		return false;
 	}
 
+	SetOpenGLAttributes();
+
+	// This makes our buffer swap syncronized with the monitor's vertical refresh
+	SDL_GL_SetSwapInterval(1);
+
 	// Create our window centered at 512x512 resolution
 	mainWindow = SDL_CreateWindow(programName.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		512, 512, SDL_WINDOW_OPENGL);
+																512, 512, SDL_WINDOW_OPENGL);
 
 	// Check that everything worked out okay
 	if (!mainWindow)
@@ -53,17 +57,12 @@ bool Init()
 	// Create our opengl context and attach it to our window
 	mainContext = SDL_GL_CreateContext(mainWindow);
 
-	SetOpenGLAttributes();
-
-	// This makes our buffer swap syncronized with the monitor's vertical refresh
-	SDL_GL_SetSwapInterval(1);
-
-	// Init GLEW
-	// Apparently, this is needed for Apple. Thanks to Ross Vander for letting me know
-	#ifndef __APPLE__
+// Init GLEW
+// Apparently, this is needed for Apple. Thanks to Ross Vander for letting me know
+#ifndef __APPLE__
 	glewExperimental = GL_TRUE;
 	glewInit();
-	#endif
+#endif
 
 	return true;
 }
@@ -144,7 +143,7 @@ void RunGame()
 					SDL_GL_SwapWindow(mainWindow);
 					break;
 				case SDLK_p:
-                    PrintSDL_GL_Attributes();
+					PrintSDL_GL_Attributes();
 					break;
 				default:
 					break;
