@@ -18,17 +18,18 @@ void renderToVRAM();
 void renderToScreen();
 void quit();
 
-void draw_line(vertex begin, vertex end);
-void plot_point(vertex);
-vertex project(double x, double y);
+void draw_line(svertex begin, svertex end);
+void plot_point(svertex);
+svertex project(vertex p);
+svertex project( double x, double y ) {  return project(vertex(x, y));  }
 void  test_projection();
 
 extern int SCREEN_WIDTH;
 extern int SCREEN_HEIGHT;
-extern int begin_x;
-extern int end_x;
-extern int begin_y;
-extern int end_y;
+extern double begin_x;
+extern double end_x;
+extern double begin_y;
+extern double end_y;
 
 void createWindow() {
     // create a window on the screen
@@ -117,28 +118,28 @@ void renderToScreen() {
     SDL_RenderPresent(renderer);
 }
 
-void plot_point(vertex p) {
-    if (p.x <= SCREEN_WIDTH && p.y <= SCREEN_HEIGHT) {
-        SDL_RenderDrawPoint(renderer, p.x, p.y);
+void plot_point(svertex p) {
+    if (p.sx <= SCREEN_WIDTH && p.sy <= SCREEN_HEIGHT) {
+        SDL_RenderDrawPoint(renderer, p.sx, p.sy);
     } else {
-        printf("skip rendering out of screen (%d, %d)\n", p.x, p.y);
+        printf("skip rendering out of screen (%d, %d)\n", p.sx, p.sy);
     }
 }
 
-void draw_line(vertex begin, vertex end) {
-    int x = begin.x;
-    int y = begin.y;
+void draw_line(svertex begin, svertex end) {
+    int x = begin.sx;
+    int y = begin.sy;
     int x_step = 1;
     int y_step = 1;
-    int delta_x = end.x - begin.x;
-    int delta_y = end.y - begin.y;
+    int delta_x = end.sx - begin.sx;
+    int delta_y = end.sy - begin.sy;
     printf("begin: (%d, %d), end: (%d, %d), delta_x: %d, delta_y: %d\n",
-        begin.x, begin.y, end.x, end.y, delta_x, delta_y);
+        begin.sx, begin.sy, end.sx, end.sy, delta_x, delta_y);
 
     // case end point is right of start point
     if (delta_x < 0) {
         delta_x = -delta_x;
-        x_step  = -1;
+        x_step  = -x_step;
     }
 
     // falling line
@@ -157,8 +158,10 @@ void draw_line(vertex begin, vertex end) {
     int e = 0; // our nominator (t*delta_y)
     int steps = 0;
     if (fast_increasing) {
+        printf("fast_increasing line\n");
         steps = delta_y;
     } else {
+        printf("slow_increasing line\n");
         steps = delta_x;
     }
 
@@ -174,7 +177,7 @@ void draw_line(vertex begin, vertex end) {
                 e -= delta_y;
                 x += x_step;
             }
-        } else {
+        } else { // slow_increasing
             x += x_step;
             e += delta_y; // corresponds to (t+1)*delta_y
 
@@ -185,34 +188,33 @@ void draw_line(vertex begin, vertex end) {
             }
         }
 
-        plot_point(vertex(x, y));
+        plot_point(svertex(x, y));
 
         // get event
         SDL_PollEvent(&event);
         if (event.type == SDL_QUIT) break;
     }
-
 }
 
-vertex project(double x, double y) {
+svertex project(vertex p) {
     int sx, sy;
-    sx = int((x - begin_x) * SCREEN_WIDTH  / (end_x - begin_x));
-    sy = int((y - end_y)   * SCREEN_HEIGHT / (begin_y - end_y));
+    sx = int((p.x - begin_x) * (double (SCREEN_WIDTH  - 1) / (end_x - begin_x)));
+    sy = int((p.y - end_y)   * (double (SCREEN_HEIGHT - 1) / (begin_y - end_y)));
 
-    printf("project: (%f,%f) -> (%d,%d)\n", x, y, sx, sy);
-    return vertex(sx, sy);
+    printf("project: (%f, %f) -> (%d, %d)\n", p.x, p.y, sx, sy);
+    return svertex(sx, sy);
 }
 
 void test_projection() {
-	int begin_x = -100; int end_x=100;
-	int begin_y = -100; int end_y=100;
-	//int x = 5, y = 10;
-	//int x = 0, y = 0;
-	int x = 1, y = 1;
-	vertex screen_coord = project(x, y);
-	printf("mathematical coord: begin_x: %d, end_x: %d, begin_y: %d, end_y: %d\n", begin_x, end_x, begin_y, end_y);
-	printf("screen coord: begin_x: %d, end_x: %d, begin_y: %d, end_y: %d\n", 0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
-	printf("mathematical coord: (%d,%d), screen coord: (%d,%d)\n", x,y,screen_coord.x, screen_coord.y);
-	printf("x-unit: %f, y-unit: %f\n", (1.)*SCREEN_WIDTH/(end_x-begin_x), (1.)*SCREEN_HEIGHT/(end_y-begin_y));
+  double begin_x = -100, end_x=100;
+  double begin_y = -100, end_y=100;
+  //double x = 5, y = 10;
+  double x = 0, y = 0;
+  //double x = 1, y = 1;
+  svertex screen_coord = project(x, y);
+  printf("mathematical coord: begin_x: %f, end_x: %f, begin_y: %f, end_y: %f\n", begin_x, end_x, begin_y, end_y);
+  printf("screen coord: begin_x: %d, end_x: %d, begin_y: %d, end_y: %d\n", 0, SCREEN_WIDTH, 0, SCREEN_HEIGHT);
+  printf("mathematical coord: (%f,%f), screen coord: (%d,%d)\n", x, y, screen_coord.sx, screen_coord.sy);
+  printf("x-unit: %f, y-unit: %f\n", (1.)*SCREEN_WIDTH/(end_x-begin_x), (1.)*SCREEN_HEIGHT/(end_y-begin_y));
 }
 

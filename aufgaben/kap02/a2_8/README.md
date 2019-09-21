@@ -2,7 +2,7 @@
 
 |Programm|Content|
 |---------|-------|
-|draw_functions.cpp    ||
+|draw_functions.cpp    |draw circle, elipse and line|
 
 
 # Compile
