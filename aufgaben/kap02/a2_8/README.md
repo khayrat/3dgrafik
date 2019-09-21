@@ -2,7 +2,8 @@
 
 |Programm|Content|
 |---------|-------|
-|draw_functions.cpp    |draw circle, elipse and line|
+|circl_ellipse.cpp    |draw circle, elipse and line|
+|spirale.cpp    |draw spirals|
 
 
 # Compile
