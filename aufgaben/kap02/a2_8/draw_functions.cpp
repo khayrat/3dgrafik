@@ -7,7 +7,8 @@ int SCREEN_HEIGHT = 480;
 const double pi = 3.1415926535;
 double begin_x = -4*pi, end_x   = 4*pi;
 //double begin_y = -5,    end_y   = 5;
-double begin_y = -5,    end_y   = ((end_x - begin_x) * SCREEN_HEIGHT) / SCREEN_WIDTH + begin_y;
+// makes y- and x-units equal sized (no stratching of the figures):
+double begin_y = -5, end_y = ((end_x - begin_x) * SCREEN_HEIGHT) / SCREEN_WIDTH + begin_y;
 double mx = 0, my = 0;
 double a = 5,  b = 1, c = 3;
 
