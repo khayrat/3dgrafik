@@ -2,7 +2,8 @@
 
 |Programm|Content|
 |---------|-------|
-|opengl.cpp    |basic opengl window|
+|opengl.cpp         |basic opengl window|
+|snow_opengl.cpp    |randowm snow with opengl - compatiblity mode!|
 
 
 # Compile
