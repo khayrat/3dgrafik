@@ -11,3 +11,5 @@
 |a2_8     |display R -> R2 functions|
 |a2_9     |Bresenham's circle algorithm|
 |a2_10    |Basic OpenGL tests|
+|a2_11    |nothing|
+|a2_12    |Project: snow effect in a frame|
