@@ -102,7 +102,8 @@ int main(int argc, char *argv[])
 	if (!Init())
 		return -1;
 
-	glClearColor(0.5, 0.0, 1.0, 1.0);
+	// black background
+	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
 	// no doube buffer so commented out:
 	//	SDL_GL_SwapWindow(mainWindow);
@@ -120,14 +121,15 @@ void RunGame()
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 
-	glColor3f(1.0, 1.0, 1.0);
-
 	SDL_Event event;
 	while (true)
 	{
 		SDL_PollEvent(&event);
 		if (event.type == SDL_QUIT)
 			break;
+
+		pixel_32 c = palette[rand() % 16 + 16];
+		glColor3ub(c.red, c.green, c.blue);
 
 		int sx = rand() % SCREEN_WIDTH;
 		int sy = rand() % SCREEN_HEIGHT;
