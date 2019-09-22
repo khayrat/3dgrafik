@@ -27,10 +27,11 @@ SDL_GLContext mainContext;
 bool SetOpenGLAttributes();
 void PrintSDL_GL_Attributes();
 void CheckSDLError(int line);
-void RunGame();
+void RenderInFrame();
 void Cleanup();
 
-pixel_32 *make_palette();
+static pixel_32 my_palette[256];
+void load_palette();
 
 int SCREEN_WIDTH = 640;
 int SCREEN_HEIGHT = 480;
@@ -81,6 +82,8 @@ bool Init()
 	glLoadIdentity();
 	gluOrtho2D(0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
 
+	load_palette();
+
 	return true;
 }
 
@@ -106,17 +109,18 @@ int main(int argc, char *argv[])
 	if (!Init())
 		return -1;
 
-	RunGame();
+	RenderInFrame();
 
 	Cleanup();
 
 	return 0;
 }
 
-void RunGame()
-{
+pixel_32 ChooseColor();
+svertex ChoosePoint();
 
-	pixel_32 *palette = make_palette();
+void RenderInFrame()
+{
 
 	// top left coordinate when draw-rect position is the center
 	int x = (SCREEN_WIDTH - 256) / 2;
@@ -129,24 +133,58 @@ void RunGame()
 		if (event.type == SDL_QUIT)
 			break;
 
-		// render loop
-		for (int i = 0, xx = x; i < 256; i++, xx++)
-		{
-			glColor3ub(palette[i].red, palette[i].green, palette[i].blue);
-			glBegin(GL_POINTS);
-			for (int yy = y; yy < y + 200; yy++)
-			{
-				glVertex2d(xx, yy);
-			}
-			glEnd();
-		}
+		pixel_32 c = ChooseColor();
+		svertex p = ChoosePoint();
+
+		//printf("color: %d, %d, %,d\n", c.red, c.green, c.blue);
+		glColor3ub(c.red, c.green, c.blue);
+		glBegin(GL_POINTS);
+		glVertex2d(p.sx, p.sy);
+		glEnd();
 
 		// render
 		glFlush();
-
-		// no doube buffer so commented out:
-		//SDL_GL_SwapWindow(mainWindow);
 	}
+}
+
+pixel_32 ChooseColor()
+{
+	return my_palette[rand() % 256];
+}
+
+bool InFrame(uint x, uint y);
+
+svertex ChoosePoint()
+{
+	while (true)
+	{
+		uint sx = rand() % SCREEN_WIDTH;
+		uint sy = rand() % SCREEN_HEIGHT;
+		if (InFrame(sx, sy))
+			return svertex(sx, sy);
+	}
+}
+
+uint a_xt = 80, a_yt = 80;
+uint a_xb = 560, a_yb = 400;
+uint i_xt = 160, i_yt = 150;
+uint i_xb = 480, i_yb = 330;
+
+bool InA(uint x, uint y);
+bool InB(uint x, uint y);
+bool InFrame(uint x, uint y)
+{
+	return InA(x, y) && !InB(x, y);
+}
+
+bool InA(uint x, uint y)
+{
+	return x >= a_xt && x <= a_xb && y >= a_yt && y <= a_yb;
+}
+
+bool InB(uint x, uint y)
+{
+	return x >= i_xt && x <= i_xb && y >= i_yt && y <= i_yb;
 }
 
 void Cleanup()
@@ -186,9 +224,8 @@ void PrintSDL_GL_Attributes()
 	std::cout << "SDL_GL_CONTEXT_MINOR_VERSION: " << value << std::endl;
 }
 
-pixel_32 *make_palette()
+void load_palette()
 {
-	static pixel_32 palette[256];
 	int part_size = 256 / 4;
 	int red_offset = 0 * part_size;
 	int white_offset = 1 * part_size;
@@ -198,11 +235,9 @@ pixel_32 *make_palette()
 
 	for (int i = 0; i < part_size; i++, c += 4)
 	{
-		palette[red_offset + i] = pixel_32(c, 0, 0);	 // black-red
-		palette[white_offset + i] = pixel_32(c, c, c); // black-white
-		palette[green_offset + i] = pixel_32(0, c, 0); // black-green
-		palette[blue_offset + i] = pixel_32(0, 0, c);	// black-blue
+		my_palette[red_offset + i] = pixel_32(c, 0, 0);		// black-red
+		my_palette[white_offset + i] = pixel_32(c, c, c); // black-white
+		my_palette[green_offset + i] = pixel_32(0, c, 0); // black-green
+		my_palette[blue_offset + i] = pixel_32(0, 0, c);	// black-blue
 	}
-
-	return palette;
 }
